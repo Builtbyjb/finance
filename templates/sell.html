@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <div style="width: 250px; margin-left: auto; margin-right: auto;">
+            <select name="symbol" id="symbol" class="form-select mb-3" aria-label="Default select example">
+                <option selected>Choose stock to sell</option>
+              {% for own in owned_stocks %}
+              <option value="{{ own }}">{{ own }}</option>
+              {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="shares" required type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}
+
+
+<!--
+    Sell HISTORY
+CREATE TABLE sell_history (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+   user_id INTEGER NOT NULL,
+   symbol TEXT NOT NULL,
+   name TEXT NOT NULL,
+   shares INTEGER NOT NULL,
+   price TEXT NOT NULL,
+   total TEXT NOT NULL,
+   time TEXT NOT NULL,
+   FOREIGN KEY(user_id) REFERENCES users(id)); -->
+

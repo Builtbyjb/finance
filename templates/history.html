@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<!-- buying -->
+    <div>
+        <h3>
+            Buy History
+        </h3>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for b in buy_history %}
+            <tr>
+                <td>{{ b["symbol"] }}</td>
+                <td>{{ b["name"] }}</td>
+                <td>{{ b["shares"] }}</td>
+                <td>{{ b["price"] }}</td>
+                <td>{{ b["total"] }}</td>
+                <td>{{ b["time"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <hr>
+    <br>
+    <!-- selling -->
+    <div>
+        <h3>
+            Sell History
+        </h3>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Time</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in sell_history %}
+            <tr>
+                <td>{{ s["symbol"] }}</td>
+                <td>{{ s["name"] }}</td>
+                <td>{{ s["shares"] }}</td>
+                <td>{{ s["price"] }}</td>
+                <td>{{ s["total"] }}</td>
+                <td>{{ s["time"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h1>
+            Welcome, {{ display_name }}
+        </h1>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <h3>Portfolio</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in portfolio %}
+            <tr>
+                <td>{{ p["symbol"] }}</td>
+                <td>{{ p["name"] }}</td>
+                <td>{{ p["shares"] }}</td>
+                <td>{{ p["price"] }}</td>
+                <td>{{ p["total"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>
+        Balance: {{ cash }}
+    </p>
+    <p>
+        Total: {{ total }}
+    </p>
+    <br>
+    <hr>
+    <br>
+    <!-- allows user to deposit -->
+    <div>
+        <form action="/deposit" method="POST">
+            <label>Add to balance</label>
+            <div class="mb-3">
+                <input autocomplete="off" type="text" placeholder="$" id="deposit" name="deposit">
+            </div>
+            <button type="submit" value="Deposit" class="btn btn-primary">Deposit</button>
+        </form>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <form action="/ch_pw" method="POST">
+            <input type="submit" value="Change Password" class="btn btn-primary" name="changepass">
+        </form>
+    </div>
+{% endblock %}
